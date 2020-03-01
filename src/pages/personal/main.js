@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Personal from './personal'
+import Personal from './index'
 
 const personal = new Vue(Personal)
 

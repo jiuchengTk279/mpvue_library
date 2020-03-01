@@ -1,6 +1,6 @@
 <template>
     <div>
-        personal组件
+        personal 组件
     </div>
 </template>
 
