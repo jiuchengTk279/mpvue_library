@@ -12,6 +12,7 @@
 
 <script>
 import BooksList from '../booksList/index'
+import request from '../../utils/request.js'
 export default {
     data () {
         return {
@@ -29,17 +30,21 @@ export default {
             this.booksArr = []
         },
         // 点击进行搜索
-        handleSearch () {
+        async handleSearch () {
             // 获取用户输入的内容
             let data = {req: this.searchContent}
             // 发起请求给服务器获取数据
-            wx.request({
-                url: 'http://localhost:3000/searchBooks',
-                data,
-                success: (res) => {
-                    this.booksArr = res.data
-                }
-            })
+            // wx.request({
+            //     url: 'http://localhost:3000/searchBooks',
+            //     data,
+            //     success: (res) => {
+            //         this.booksArr = res.data
+            //     }
+            // })
+            // 调用 request 方法后返回值为 promise 对象， 所以可以用 async和 await
+            let result = await request('/searchBooks', data)
+            // console.log(result, '返回的数据')
+            this.booksArr = result
         }
     }
 }
